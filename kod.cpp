@@ -40,7 +40,7 @@ class ogrenci:public kisi{
 		string onum;
 		vector <string> dersler;
 		int sinif;
-		public:
+	public:
 			ogrenci(string ad,string soyad,string num,string dt,string onum,int sinif):kisi(ad,soyad,num,dt),onum(onum),sinif(sinif){}
 	
 	string getonum(){
@@ -63,6 +63,55 @@ class ogrenci:public kisi{
 			
 };
 
+class shoca:public kisi{
+private:
+	string dersadi;
+	unsigned int derssaati;
+	public:
+		shoca(string ad,string soyad,string num,string dt,string dersadi,int derssaati):kisi(ad,soyad,num,dt),dersadi(dersadi),derssaati(derssaati){}
+		~shoca(){}
+		
+		string getderssaati(){
+			return derssaati;
+		}
+		int getderssaati(){
+			return derssaati;
+		}
+		
+		virtual double maashesapla(){
+			return derssaati*20;
+		}
+		void yazdir(){
+		cout<<"öğrencinin ad - soyadı: "<<getad()<<"\nTC: "<<getnum()<<"\nDoğum Tarihi: "<<getdt()<<"\nDersi:"<<getdersadi()<<"\nDers saati: "<<getderssaati()<<"Maaşı: "<<maashesapla()<<endl;
+		cout<<"Girilen veri dosyaya yazldı."<<endl;
+		ifstream dosya("dosya.txt",ios::app);
+		dosya<<"öğrencinin ad - soyadı: "<<getad()<<"\nTC: "<<getnum()<<"\nDoğum Tarihi: "<<getdt()<<"\nDersi:"<<getdersadi()<<"\nDers saati: "<<getderssaati()<<"Maaşı: "<<maashesapla()<<endl;
+		dosya.close();			
+		}
+};
+
+		
+	class hoca:public{
+		double tabanmaas;
+	public:
+		hoca(string ad,string soyad,string num,string dt,string dersadi,int derssaati,double maas):shoca(ad,soyad,num,dt,dersadi,derssaati),maas(maas){}
+
+		double gettabanmaas(){
+			return tabanmaas;
+		}	
+		
+		double maashesapla(){
+			return tabanmaas+getderssaati()*50;
+		}
+		void yazdir(){
+		cout<<"öğrencinin ad - soyadı: "<<getad()<<"\nTC: "<<getnum()<<"\nDoğum Tarihi: "<<getdt()<<"\nDersi:"<<getdersadi()<<"\nDers saati: "<<getderssaati()<<"Maaşı: "<<maashesapla()<<"\nTaban maaşı: "<<gettabanmaas()<<endl;
+		cout<<"Girilen veri dosyaya yazldı."<<endl;
+		ifstream dosya("dosya.txt",ios::app);
+		dosya<<"öğrencinin ad - soyadı: "<<getad()<<"\nTC: "<<getnum()<<"\nDoğum Tarihi: "<<getdt()<<"\nDersi:"<<getdersadi()<<"\nDers saati: "<<getderssaati()<<"Maaşı: "<<maashesapla()<<"\nTaban maaşı: "<<gettabanmaas()<<endl;
+		dosya.close();
+		}
+		
+	};
 
 
 int main()
